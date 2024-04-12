@@ -13,14 +13,16 @@ import (
 var HelpDoc = ""
 
 func AddHelpDoc(command string, comment string) {
+	// log.Println(command + ":" + comment)
 	if HelpDoc != "" {
 		HelpDoc += "\n"
 	}
 	if command != "" {
-		HelpDoc += fmt.Sprintf("\\`%s` :  %s", command, comment)
+		HelpDoc += fmt.Sprintf("`/%s` :  %s", command, comment)
 	} else {
 		HelpDoc += comment
 	}
+	log.Print(HelpDoc)
 }
 
 func init() {
@@ -32,9 +34,8 @@ func init() {
 }
 
 func GetHelp(bot *telego.Bot, update telego.Update) {
-	log.Println("我觉得我还可以再抢救一下")
 	_, _ = bot.SendMessage(tu.Message(
 		tu.ID(update.Message.Chat.ID),
-		"我觉得我还可以再抢救一下",
+		HelpDoc,
 	).WithParseMode(telego.ModeMarkdownV2))
 }
