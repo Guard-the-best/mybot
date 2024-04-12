@@ -1,0 +1,8 @@
+[network]
+proxy = "protocal://hostname:port"
+
+[database]
+filename = "/path/to/xxx/bot.db"
+
+[bot]
+token = "your_telegram_bot_token"
