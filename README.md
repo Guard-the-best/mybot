@@ -8,5 +8,5 @@
 
 ## TODO
 
-- 定时任务的实现，可以考虑使用 `/cron { daily | weekly | monthly } yyyy-mm-dd[-HH-MM-SS]` 以及 `/cron f1 f2 f3 f4 f5 comment` 的命令格式
+- 定时任务的实现，可以考虑使用 `/cron { daily | weekly | monthly } yyyy-mm-dd[-HH-MM-SS] comment` 以及 `/cron f1 f2 f3 f4 f5 comment` 的命令格式
 - nbnhhsh

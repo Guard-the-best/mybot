@@ -3,8 +3,7 @@ package main
 import (
 	"log"
 
-	_ "github.com/Guard-the-best/mybot/internal/bot"
-	"github.com/Guard-the-best/mybot/internal/utils"
+	"github.com/Guard-the-best/mybot/utils"
 	"github.com/mymmrac/telego"
 	th "github.com/mymmrac/telego/telegohandler"
 	"github.com/valyala/fasthttp"
