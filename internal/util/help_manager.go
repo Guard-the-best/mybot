@@ -1,11 +1,10 @@
-package utils
+package util
 
 import (
 	"fmt"
 	"log"
 
 	"github.com/mymmrac/telego"
-	th "github.com/mymmrac/telego/telegohandler"
 	tu "github.com/mymmrac/telego/telegoutil"
 )
 
@@ -26,10 +25,6 @@ func AddHelpDoc(command string, comment string) {
 
 func init() {
 	AddHelpDoc("help", "获得一些帮助")
-	RegisterHandler(
-		GetHelp,
-		th.CommandEqual("help"),
-	)
 }
 
 func GetHelp(bot *telego.Bot, update telego.Update) {

@@ -1,4 +1,4 @@
-package utils
+package util
 
 import (
 	"log"
@@ -8,7 +8,7 @@ import (
 	"github.com/BurntSushi/toml"
 )
 
-const ConfigPath string = "../../config.toml"
+const ConfigPath string = "../config.toml"
 
 var DefaultConfig Config
 

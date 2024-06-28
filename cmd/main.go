@@ -3,7 +3,8 @@ package main
 import (
 	"log"
 
-	"github.com/Guard-the-best/mybot/utils"
+	"github.com/Guard-the-best/mybot/internal/util"
+	"github.com/Guard-the-best/mybot/internal/controller"
 	"github.com/mymmrac/telego"
 	th "github.com/mymmrac/telego/telegohandler"
 	"github.com/valyala/fasthttp"
@@ -11,8 +12,8 @@ import (
 )
 
 func main() {
-	utils.DefaultConfig.PrintConfig()
-	bot := buildBot(&utils.DefaultConfig)
+	util.DefaultConfig.PrintConfig()
+	bot := buildBot(&util.DefaultConfig)
 
 	updates, _ := bot.UpdatesViaLongPolling(nil)
 
@@ -21,13 +22,13 @@ func main() {
 	defer bh.Stop()
 	defer bot.StopLongPolling()
 
-	handlerList := utils.GetHandlerList()
+	handlerList := controller.GetHandlerList()
 	bindingHandlers(bh, &handlerList)
 
 	bh.Start()
 }
 
-func bindingHandlers(bh *th.BotHandler, handlerList *[]utils.HandlerRegister) {
+func bindingHandlers(bh *th.BotHandler, handlerList *[]controller.HandlerRegister) {
 	log.Println("注册handler")
 	for _, handlerRegister := range *handlerList {
 		log.Printf("%v: %v \n", handlerRegister.Handler, handlerRegister.Predicates)
@@ -35,7 +36,7 @@ func bindingHandlers(bh *th.BotHandler, handlerList *[]utils.HandlerRegister) {
 	}
 }
 
-func buildBot(config *utils.Config) *telego.Bot {
+func buildBot(config *util.Config) *telego.Bot {
 	httpClient := fasthttp.Client{}
 	if config.Network.NeedProxy() {
 		if config.Network.GetProxyProtocal() == "socks5" {

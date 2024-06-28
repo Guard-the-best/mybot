@@ -1,12 +1,10 @@
-package utils
+package controller
 
 import (
 	"log"
 
 	th "github.com/mymmrac/telego/telegohandler"
 )
-
-type Handler func(Request) Response
 
 type HandlerRegister struct {
 	Handler    th.Handler
