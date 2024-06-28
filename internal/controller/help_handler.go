@@ -13,5 +13,5 @@ func helpHandler(bot *telego.Bot, update telego.Update) {
 }
 
 func init() {
-	RegisterHandler(helpHandler, th.CommandEqual("help"))
+	util.RegisterHandler(helpHandler, th.CommandEqual("help"))
 }

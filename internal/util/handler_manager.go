@@ -1,4 +1,4 @@
-package controller
+package util
 
 import (
 	"log"
@@ -23,4 +23,12 @@ func RegisterHandler(handler th.Handler, predicates ...th.Predicate) {
 // 防止外部修改，返回一个复制的handlerList
 func GetHandlerList() []HandlerRegister {
 	return handlerList
+}
+
+func BindingHandlers(bh *th.BotHandler) {
+	log.Println("注册handler")
+	for _, handlerRegister := range handlerList {
+		log.Printf("%v: %v \n", handlerRegister.Handler, handlerRegister.Predicates)
+		bh.Handle(handlerRegister.Handler, handlerRegister.Predicates...)
+	}
 }

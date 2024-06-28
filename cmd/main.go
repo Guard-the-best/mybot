@@ -4,7 +4,7 @@ import (
 	"log"
 
 	"github.com/Guard-the-best/mybot/internal/util"
-	"github.com/Guard-the-best/mybot/internal/controller"
+	_ "github.com/Guard-the-best/mybot/internal/controller"
 	"github.com/mymmrac/telego"
 	th "github.com/mymmrac/telego/telegohandler"
 	"github.com/valyala/fasthttp"
@@ -22,18 +22,9 @@ func main() {
 	defer bh.Stop()
 	defer bot.StopLongPolling()
 
-	handlerList := controller.GetHandlerList()
-	bindingHandlers(bh, &handlerList)
+	util.BindingHandlers(bh)
 
 	bh.Start()
-}
-
-func bindingHandlers(bh *th.BotHandler, handlerList *[]controller.HandlerRegister) {
-	log.Println("注册handler")
-	for _, handlerRegister := range *handlerList {
-		log.Printf("%v: %v \n", handlerRegister.Handler, handlerRegister.Predicates)
-		bh.Handle(handlerRegister.Handler, handlerRegister.Predicates...)
-	}
 }
 
 func buildBot(config *util.Config) *telego.Bot {
