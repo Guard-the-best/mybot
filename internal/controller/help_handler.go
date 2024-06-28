@@ -9,7 +9,7 @@ import (
 )
 
 func helpHandler(bot *telego.Bot, update telego.Update) {
-	_, _ = bot.SendMessage(tu.Message(tu.ID(update.Message.Chat.ID), util.HelpDoc))
+	_, _ = bot.SendMessage(tu.Message(tu.ID(update.Message.Chat.ID), util.HelpDoc).WithParseMode(telego.ModeMarkdownV2))
 }
 
 func init() {
